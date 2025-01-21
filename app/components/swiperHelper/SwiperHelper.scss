@@ -1,0 +1,64 @@
+@use '@/styles/variables' as *;
+
+.swiper-helper {
+  padding-top: 10px;
+  position: relative;
+  opacity: 0;
+  width: 100%;
+  max-width: 100%;
+  --swiper-navigation-size: 10px;
+  --swiper-theme-color: $color-accent-1;
+  --swiper-navigation-color: $color-accent-1;
+  --swiper-navigation-sides-offset: 40px;
+  --swiper-navigation-top-offset: 50%;
+  @media (max-width: 1120px) {
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
+
+  .swiper {
+    @media (max-width: 1120px) {
+      border-top: 1px solid $color-base-light;
+      padding-top: 20px;
+
+      .swiper-slide-next {
+        opacity: 0.4;
+      }
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 15px 0 #3877EE1A;
+    background-color: $color-light;
+    &:after {
+      content: none;
+    }
+    & svg {
+      width: 6px;
+      height: 12px;
+    }
+    @media (max-width: 1120px) {
+      display: none;
+    }
+  }
+  .swiper-button-prev{
+    left: 20px;
+  }
+  .swiper-button-disabled {
+    opacity: 0!important;
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 30px;
+    padding-bottom: 10px;
+    display: none;
+    @media (max-width: 1120px) {
+        display: block;
+    }
+  }
+}

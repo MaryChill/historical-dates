@@ -1,0 +1,211 @@
+@use '@/styles/variables' as *;
+
+.swiper-main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: -75px;
+  @media (max-width: 1120px) {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .swiper-circle-options {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    top: -50px;
+    @media (max-width: 1120px) {
+      width: 58px;
+      gap: 10px;
+      order: 3;
+      align-self: flex-start;
+      bottom: -30px;
+      top: auto;
+    }
+  }
+  .swiper-circle-navigation {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 20px;
+    @media (max-width: 1120px) {
+      height: 25px;
+      width: 58px;
+      bottom: 0;
+      top: auto;
+      gap: 8px;
+      z-index: 10;
+    }
+  }
+
+  .swiper-circle-button-prev,
+  .swiper-circle-button-next {
+    border-radius: 50%;
+    border: 1px solid rgba($color-base, 0.5);
+    height: 50px;
+    width: 50px;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    svg {
+      width: 10px;
+      height: 14px;
+    }
+    @media (max-width: 1120px) {
+      height: 25px;
+      width: 25px;
+      svg {
+        width: 6px;
+        height: 8px;
+      }
+    }
+  }
+
+  .swiper-circle-button-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .swiper-circle-pagination {
+    height: 18px;
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    @media (max-width: 1120px) {
+      bottom: 30px;
+      top: auto;
+    }
+  }
+}
+
+.circle {
+  border-radius: 50%;
+  width: 536px;
+  height: 530px;
+  position: relative;
+  border: 1px solid rgba($color-base, 0.1);
+  left: calc(50% - 268px);
+  z-index: 4;
+
+  &__item {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 25px;
+    top: calc(50% - 28px);
+    left: calc(50% - 28px);
+    transition-property: padding;
+    transition-duration: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      padding: 0;
+      .circle__number {
+        width: 56px;
+        height: 56px;
+        border: 1px solid rgba($color-base, 0.5);
+        background-color: $color-primary;
+      }
+    }
+  }
+  &__item--active {
+    padding: 0;
+    .circle__number {
+      width: 56px;
+      height: 56px;
+      border: 1px solid rgba($color-base, 0.5);
+      background-color: $color-primary;
+    }
+    .circle__description {
+      animation: circleDescription 0.2s linear 1 0.7s forwards;
+    }
+  }
+  &__number {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 3px solid $color-base;
+    background-color: $color-base;
+    transition-property: width, height, border, background-color;
+    transition-duration: 0.3s;
+  }
+  &__description {
+    position: absolute;
+    left: 70px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    opacity: 0;
+  }
+  @media (max-width: 1120px) {
+    bottom: 0;
+    position: static;
+    width: 100%;
+    order: 4;
+    border-radius: 0;
+    border: none;
+    height: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+      &__item {
+        transform: none!important;
+        position: static;
+        padding: 5px;
+        &:hover {
+          padding: 5px;
+          .circle__number {
+            width: 6px;
+            height: 6px;
+            background-color: rgba($color-base, 0.4);
+            border: 3px solid rgba($color-base, 0.4);
+            color: rgba($color-base, 0.4);
+          }
+        }
+      }
+      &__item--active {
+        padding: 5px;
+        .circle__number {
+          width: 6px;
+          height: 6px;
+          background-color: $color-base!important;
+          border-color: $color-base!important;
+        }
+        .circle__description {
+          animation: none;
+          display: none;
+        }
+      }
+      &__number {
+        background-color: rgba($color-base, 0.4);
+        border-color: rgba($color-base, 0.4);
+        color: rgba($color-base, 0.4);
+      }
+      &__description {
+        display: none;
+      }
+  }
+}
+@keyframes circleDescription {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

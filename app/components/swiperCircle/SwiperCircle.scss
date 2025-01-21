@@ -1,0 +1,40 @@
+@use '@/styles/variables' as *;
+
+.swiper-circle {
+  top: 180px;
+  position: absolute;
+  @media (max-width: 1120px) {
+    position: static;
+  }
+}
+.timeline {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 70px;
+  align-items: center;
+  margin: auto;
+
+  &__data {
+    font-weight: 700;
+    line-height: 160px;
+    font-size: 200px;
+    letter-spacing: -3px;
+    color: $color-accent-1;
+    text-indent: 0;
+  }
+  &__data--end {
+    color: $color-accent-2;
+  }
+  @media (max-width: 1120px) {
+      justify-content: space-between;
+      gap: 0;
+      &__data {
+        line-height: 72px;
+        font-size: 56px;
+      }
+  }
+
+}
+
