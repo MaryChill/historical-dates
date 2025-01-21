@@ -7,10 +7,15 @@ import SwiperCircle from "@/components/swiperCircle/SwiperCircle";
 import SwiperHelper from "@/components/swiperHelper/SwiperHelper";
 import rotateCircle from "@/lib/utils/rotateCircle";
 import gsap from "gsap";
-
-const MainSwiper: React.FC = ({data}) => {
-    const swiperRef= useRef(null);
-    const circleRef= useRef(null);
+import IHistoricalDates from "@/types/types";
+// import {SwiperRef} from "swiper/react";
+import { Swiper as SwiperType } from 'swiper';
+interface MainSwiperProps {
+    data: IHistoricalDates[];
+}
+const MainSwiper: React.FC<MainSwiperProps> = ({data}) => {
+    const swiperRef= useRef<SwiperType>(null);
+    const circleRef= useRef<any>(null);
     const [activeSlide, setActiveSlide] = useState<number>(0);
     const [paginationRotate, setPaginationRotate] = useState<number>(0)
     const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -26,13 +31,12 @@ const MainSwiper: React.FC = ({data}) => {
         if (window.matchMedia("(max-width: 1119px)").matches) {
             gsap.set(circleRef.current, {rotation: 0})
         } else {
-            console.log(isMobile)
-            rotateCircle(swiperRef.current.realIndex, 0, circleRef, setPaginationRotate, isMobile, true)
+            rotateCircle(activeSlide, 0, circleRef, setPaginationRotate, isMobile, true)
         }
     }, [isMobile])
 
-    function performSwipe (option) {
-        swiperRef.current.slideTo(option)
+    function performSwipe (option:number) {
+        swiperRef?.current?.slideTo(option)
     }
 
     return (

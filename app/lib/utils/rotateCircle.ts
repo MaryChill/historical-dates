@@ -3,7 +3,7 @@ import React from "react";
 import gsap from "gsap";
 import data from "../data";
 
-export default function rotateCircle(index:number, activeSlide:number, circleRef, setPaginationRotate:React.Dispatch<React.SetStateAction<number>>, isMobile:boolean, fromMobile?:boolean) {
+export default function rotateCircle(index:number, activeSlide:number, circleRef:any, setPaginationRotate:React.Dispatch<React.SetStateAction<number>>, isMobile:boolean, fromMobile?:boolean) {
     function getAnimationPath() {
         if ( Math.abs(index - activeSlide) < data.length / 2) {
             return index - activeSlide

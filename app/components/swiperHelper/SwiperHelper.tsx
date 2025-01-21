@@ -3,8 +3,13 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation} from "swiper/modules";
 import React, {useEffect, useRef} from "react";
 import gsap from "gsap";
+import {IDescription} from "@/types/types";
 
-const SwiperHelper: React.FC = ({data, title})  => {
+interface SwiperHelperProps {
+    data: IDescription[];
+    title: string
+}
+const SwiperHelper: React.FC<SwiperHelperProps> = ({data, title})  => {
     const swiperHelperRef = useRef(null)
 
     useEffect(() => {

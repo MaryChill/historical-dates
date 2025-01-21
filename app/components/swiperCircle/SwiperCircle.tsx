@@ -1,22 +1,23 @@
 'use client'
 import {Navigation, Pagination, EffectCreative} from "swiper/modules";
 import {Swiper, SwiperSlide} from "swiper/react";
+import { Swiper as SwiperType } from 'swiper';
 import React, {forwardRef, useState} from "react";
 import gsap from "gsap";
 import IHistoricalDates from "@/types/types";
 interface SwiperCircleProps {
-    data: IHistoricalDates;
+    data: IHistoricalDates[];
     setActiveSlide: React.Dispatch<React.SetStateAction<number>>
 }
 
-const SwiperCircle = forwardRef<HTMLDivElement, SwiperCircleProps>(
+const SwiperCircle = forwardRef<SwiperType, SwiperCircleProps>(
     function SwiperCircle({data, setActiveSlide}, ref) {
         const [startYear, setStartYear] = useState<number>(data[0].dates[0].year)
         const [endYear, setEndYear] = useState<number>(data[data.length - 1].dates[data[data.length - 1].dates.length - 1].year)
         function appendZero(num:number){
             return (num > 9) ? num : '0' + num;
         }
-        function createCustomPagination(currentClass, totalClass):string {
+        function createCustomPagination(currentClass:string, totalClass:string) {
             return '<span class="' + currentClass + '"></span>'+'/' +'<span class="' + totalClass + '"></span>';
         }
         function animateNumber (oldYear:number, newYear:number, updater:(value: number) => void) {
@@ -39,6 +40,7 @@ const SwiperCircle = forwardRef<HTMLDivElement, SwiperCircleProps>(
             <>
                 <Swiper className="swiper"
                         onBeforeInit={(swiper) => {
+                            //@ts-ignore
                             ref.current = swiper;
                         }}
                         onSlideChange={handleSlideChange}
