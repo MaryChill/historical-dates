@@ -8,14 +8,13 @@ import SwiperHelper from "@/components/swiperHelper/SwiperHelper";
 import rotateCircle from "@/lib/utils/rotateCircle";
 import gsap from "gsap";
 import IHistoricalDates from "@/types/types";
-// import {SwiperRef} from "swiper/react";
 import { Swiper as SwiperType } from 'swiper';
 interface MainSwiperProps {
     data: IHistoricalDates[];
 }
 const MainSwiper: React.FC<MainSwiperProps> = ({data}) => {
     const swiperRef= useRef<SwiperType>(null);
-    const circleRef= useRef<any>(null);
+    const circleRef= useRef<HTMLDivElement>(null);
     const [activeSlide, setActiveSlide] = useState<number>(0);
     const [paginationRotate, setPaginationRotate] = useState<number>(0)
     const [isMobile, setIsMobile] = useState<boolean>(false);

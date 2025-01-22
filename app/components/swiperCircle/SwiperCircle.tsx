@@ -30,7 +30,7 @@ const SwiperCircle = forwardRef<SwiperType, SwiperCircleProps>(
                 ease: "power1.inOut"
             });
         }
-        function handleSlideChange (swiper:any)  {
+        function handleSlideChange (swiper:SwiperType)  {
             setActiveSlide(swiper.realIndex);
             animateNumber(startYear, data[swiper.realIndex].dates[0].year, setStartYear);
             animateNumber(endYear, data[swiper.realIndex].dates[data[swiper.realIndex].dates.length - 1].year, setEndYear);
